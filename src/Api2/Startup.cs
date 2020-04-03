@@ -14,17 +14,11 @@ namespace Api
             services.AddAuthentication("jwt")
                 .AddJwtBearer("jwt", options =>
                 {
-                    options.Authority = "https://localhost:44380/";
-                    options.Audience = "customer.api";
+                    options.Authority = SharedConfiguration.IdentityServer.BaseUrl;
+                    options.Audience = SharedConfiguration.Api2.ResourceId;
                 });
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("management", policy =>
-                {
-                    policy.RequireClaim("scope", "invoice.management");
-                });
-            });
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

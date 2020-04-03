@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Logging;
 
 namespace Mvc2
 {
@@ -13,6 +14,7 @@ namespace Mvc2
     {
         public Startup(IConfiguration configuration)
         {
+            IdentityModelEventSource.ShowPII = true;
             Configuration = configuration;
         }
 
@@ -42,7 +44,7 @@ namespace Mvc2
                     options.ClientSecret = SharedConfiguration.Mvc.ClientSecret;
 
                     options.ResponseType = "code";
-                    //options.Scope.Add("customer.api");
+                    options.Scope.Add(SharedConfiguration.Api1.ResourceId);
                     //options.Scope.Add("offline_access");
 
                     options.UsePkce = true;

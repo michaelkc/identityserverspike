@@ -7,6 +7,7 @@ namespace Api
     [Route("test")]
     public class TestController : ControllerBase
     {
+        [Authorize]
         public IActionResult Get()
         {
             var claims = User.Claims.Select(c => new { c.Type, c.Value });

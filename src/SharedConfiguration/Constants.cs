@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace SharedConfiguration
 {
     public static class Api1
     {
-        public const string BaseUrl = "https://localhost:44212/";
+        public const string BaseUrl = "https://localhost:44393/";
         public const string ClientId = "api1";
         public const string ClientSecret = "Ej^ATR$^1WBRw1UlO&f4lTMI9OpX#O";
         public const string ResourceId = "api1";
